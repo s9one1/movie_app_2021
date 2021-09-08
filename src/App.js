@@ -1,4 +1,3 @@
-import Potato from './potato'
 
 function App() {
   return (
@@ -8,5 +7,12 @@ function App() {
     </div>
   );
 }
+
+function Potato(){
+  return (
+      <h3>I love potato</h3>
+  );
+}
+
 
 export default App
