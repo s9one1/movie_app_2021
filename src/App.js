@@ -1,13 +1,12 @@
-/* import React from 'react';
-import logo from './logo.svg';
-import './App.css'; */
+import Potato from './potato'
 
 function App() {
   return (
-    <div className="App">
-      Hello React
+    <div>
+      <h1>Hello React!!!!!!!!!!!!</h1>
+      <Potato />
     </div>
   );
 }
 
-export default App;
+export default App
