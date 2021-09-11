@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# 김민정 202030302
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[09월 08일]
+>#### 수업 준비
+1. create-react-app(별다른 개발환경 구축없이 개발을 바로 시작할 수 있도록 프로젝트 구조, 설정 작업 등을 자동으로 진행해 주는 도구)
+2. create-react-app으로 리액트 앱 만들기(작업 디렉토리를 미리 만들고 실행하면 편함, 수업에서는 movie_app_2021로 통일, 명령은> npx create-react-app movie_app_2021)
+3. 프로젝트 폴더 선택하기
+4. README.md 파일 수정하기(매주 학습내용을 작성한다.)
+5. package.json 파일 수정하기(test,eject 명령어 삭제하고 파일 저장)
+6. 리액트 앱 실행하기(명령 프롬프트에서 npm start로 앱을 실행)
+7. 리액트 앱 종료하기(종료하려면 프롬포트에서 Ctrl + c를 누른다.)
+8. 깃허브에 리액트 앱 업로드하기
+9. 리액트 앱 살펴보고 수정하기
+10. index.js파일 수정하기
+11. App.js 파일 수정하기
+12. index.html 수정해 보기
+>#### 리액트 앱
+1. 리액트 앱 실행, 터미널 종료하고 브라우저 새로 고침
+2. 리액트 앱 다시 실행하고 코드 수정하기
+```
+import React from 'react';
 
-## Available Scripts
+function App() {
+    return (
+        <div>
+        <h1>Hello!!!!</h1>
+        </div>
+    );
+}
 
-In the project directory, you can run:
+export default App;
+```
+>#### 리액트 기초 개념 
+1. 컴포넌트
+- function으로 정의 내린 곳을 컴포넌트라고 한다.
+- App()함수가 정의되어 있고, 함수는 html문서를 return해 주고 있는것을 App컴포넌트를 정의했다고 한다.
+- index.js 파일로 컴포넌트의 사용 알아보기
+2. JSX
+- js와 html 문법의 조합한 것으로 사용하다 보면 자연스럽게 익힐 수 있다.
+>#### Potato 컴포넌트 만들기
+1. src폴더 안에 Potato.js 파일 만들기
+2. 첫 글자는 대문자로
+3. import 구문을 입력해야 리액트 jsx를 이해할 수 있다.
+```
+import React from 'react';
+```
+4. Potato()함수 작성
+```
+import React from 'react';
+function Potato() {
 
-### `npm start`
+}
+```
+5. Potato 컴포넌트가 jsx를 반환
+```
+import React from 'react';
+function Potato() {
+    return <h3>I love potato</h3>;
+}
+```
+6. 마지막 줄에 export 구문 추가
+```
+import React from 'react';
+function Potato() {
+    return <h3>I love potato</h3>;
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+export default Potato;
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[09월 01일]
+학습내용
