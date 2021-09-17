@@ -1,5 +1,56 @@
 # 김민정 202030302
 
+<details markdown="1">
+<summary>0915</summary>
+
+[09월 15일]
+
+### JSX 
+___
+
+- 컴포넌트는 자바스크립트와 html을 조합한 jsx라는 문법을 사용해서 만든다.
+- jsx의 문법은 js와html 문법의 조합한 것이다.
+>##### Potato 컴포넌트 만들기
+- import 구문을 입력해야 리액트가 jsx를 이해할 수 있어 반드시 입력
+```
+import React from 'react';
+```
+>##### Potato()함수를 작성한다.
+- 컴포넌트를 작성할 때 이름은 대문자로 시작해야 한다.
+```
+import React from 'react';
+function Potato() {
+
+}
+```
+>##### Potato 컴포넌트가 JSX를 반환하도록 만든다.
+```
+import React from 'react';
+
+function Potato() {
+    return <h3>I love potato</h3>;
+}
+```
+>##### 마지막 줄에 export 구문을 다음과 같이 추가한다.
+```
+import React from 'react';
+
+function Potato() {
+    return <h3>I love potato</h3>;
+}
+```
+>##### Photo 컴포넌트 사용하기
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App;
+
+ReactDOM.render(<App /><Potato/>, document.getElementById('root'));
+```
+</details>
+<details markdown="1">
+<summary>0908</summary>
+
 [09월 08일]
 >#### 수업 준비
 1. create-react-app(별다른 개발환경 구축없이 개발을 바로 시작할 수 있도록 프로젝트 구조, 설정 작업 등을 자동으로 진행해 주는 도구)
@@ -67,7 +118,10 @@ function Potato() {
 
 export default Potato;
 ```
+</details>
 
+<details markdown="1">
+<summary>0901</summary>
 [09월 01일]
 >#### 교재는 Do it! 클론 코딩 영화 평점 웹서비스
 >#### 클론 코딩
@@ -81,3 +135,4 @@ export default Potato;
 - npx 설치
 - vscode 설치
 - git 설치
+</details>
