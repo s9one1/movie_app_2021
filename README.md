@@ -1,5 +1,72 @@
 # 김민정 202030302
 
+[09월 29일]
+
+<details markdown="1">
+<summary>0929</summary>
+
+>##### 상대경로 이미지 삽입 방법
+- 이미지가 적을 경우 import를 사용한다.
+1. public 폴더에 images폴더를 생성한다.
+2. 필요한 곳에 <img src="image/[이미지 이름]">형태로 태그를 작성한다.
+
+##### 음식 앱에 prop-types 도입하기
+
+>##### 음식 데이터에 rating 추가하기
+- foodLike 배열의 각 요소에 rating을 추가한다.
+- 값의 자료형은 number로 한다.
+Rating props를 Food 컴포넌트에 전달하면서 값을 검사한다.
+- prop-types도구를 사용하여 자료형을 검사한다.
+```
+명령 프롬포트
+> npm install prop-types
+```
+
+>##### prop-types 정상 설치 여부 확인
+- Package.json 파일을 열어 dependencies 키에 있는 값을 살펴본다.
+- Prop-types가 등록되어 있으면 정상 설치 됨.
+
+>##### prop-types 적용하기
+- import PropTypes from 'prop-types';를 App.js파일 맨 위에 추가
+- ration props를 Food 컴포넌트에 전달한다.
+
+>##### Food.propTypes 작성
+- Food.propType에 객체 적어 주기
+- 모든 props는 문자열이고 반드시 있어야 한다는 조건 추가
+- 콘솔 탭을 확인하면 경고 메세지가 보인다.
+
+>##### Food.propTypes의 rating 키 값 확인하기
+- isRequired는 필요하다.
+- 'rating에는 string이라는 자료형이 반드시 필요하다'
+
+>##### prop-types 경고 해결하기
+- rating: PropTypes.string.isRequired 대신 rating: PropTypes.number.isRequired 로 교체
+
+>##### 다른 종류의 prop-types 경고 해결하기
+- picture props의 이름을 image로 바꾸기
+- Food 컴포넌트에 picture라는 이름의 props가 필요한데, 그 값이 undefined다.
+
+>##### render() 함수
+- render( ) 함수 내에서 return문을 사용한다
+- 함수형 컴포넌트는 return문이 JSX를 반환하지만, 클래스형 컴포넌트는 render()함수가 JSX를 반환한
+다.
+```
+import React, {Component} from 'react'
+
+class App extends Component {
+    render() {
+        return (
+            <h1> I am a class component </h1>
+        )
+    }
+}
+
+export default App
+```
+</details>
+
+
+
 <details markdown="1">
 <summary>0915</summary>
 
