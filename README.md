@@ -1,9 +1,79 @@
 # 김민정 202030302
 
-[09월 29일]
+[10월 6일]
+
+>##### axios 설치하기
+-  javascript에서는 영화 데이터를 로딩 할 때 fetch()함수를 사용한다. 
+```
+> npm install axios
+```
+>##### YTS영화 데이터 API 살펴보기
+- 브라우저 주소창에 yts.it/api 라고 입력하고, YTS영화 데이터 API 사이트에 접속
+- ListMoviesApi를 사용한다.
+- API는 특정 주소를 입력하면 그 주소에 맞는 결과를 보내 준다.
+>##### 영화 목록 데이터 확인해 보기
+- 브라우저에서 Endpoint의 주소 중 json으로 끝나는 주소를 입력한다.
+```
+https://yts.mx/api/v2/list_movies.json
+```
+>##### JSON Viewer 확장 도구 설치하기
+- JSON Viewer라는 확장 도구를 설치하면 정상적으로 볼 수 있다.
+
+>##### https://yts.mx/api/v2/list_movies.json
+- status: 응답상태 메시지
+- data: 영화 데이터
+- movie_count: API가 보내준 영화 데이터의 개수
+- limit: 보내준 데이터의개수
+- movies키의 서브키로 id, url, imdb_code, title 등을 제공한다.
+
+>##### 노마드 코더 영화 API를 사용하자
+- YTS의 endpoint /list_movies.json을 사용하려면 yts-proxy.now.sh에 /list_movies.json을 붙이
+면 된다.
+- 만일 YTS의 다른 endpoint와 함께 노마드 코더 영화 API를 사용하려면,
+yts-proxy.now.sh에 endpoint를 붙이면 된다.
+```
+https://github.com/serranoarevalo/yts-proxy
+```
+
+| endpoint | YTS API | 노마드 코더 영화 API |
+|:---:|:---:|:---:|
+| list_movies | yts.mx/api/v2/list_movies.json | yts-proxy.now.sh/list_movies.json |
+| movie_details | yts.mx/api/v2/movies_details.json | yts-proxy.now.sh/movies_details.json |
+
+
+>##### 영화 정보를 더 자세히 보기 위한 조건 추가
+- yts-proxy.now.sh/list_movies.json에 movie_id를
+추가
+
+>##### 노마드 코더 영화 API를 영화 앱에서 호출하기
+- API를 사용하려면 axios를 import한 다음, componentDidMount()함수에서 axios로 API를 호출
+- axios.get()함수의 인자에 URL을 전달하여 API를 호출
+- setTimeout은 이제 사용할 필요가 없으니 삭제
+
+>##### getMovies()함수 기다린 다음, axios.get() 함수가 반환한 데잍터 잡기
+- getMovies()함수를 만들고, 이 함수 안에서 axios.get()이 실행하도록 한다.
+- axios.get()의 return값은 movies에 저장한다.
+-  componentDidMount()함수가 실행되면 this.getMovie()가 실행된다.
+
+>##### getMovies() async 붙이고, axios.get()에 await붙이기
+- 시간이 필요하다는 것을 알리기 위해서는 async, await 키워드가 필요하다.
+-  시간이 필요하다는 것을 알리려면 async를 ()앞에 붙이고, 실제 시간이 필요한 대상인 axios.get()함수 에는 await을 붙인다.
+
+>##### movies state에 영화 데이터 저장하기
+- this.setState({ movies: movies })와 같이 작성해서 movies state에 영화 데이터를 저장
+- this.setState({ movies: movies })를 this.setState({ movies })로 수정한다.
+>##### isLoading state를 true에서 false로 업데이트 하기
+- 서 “영화 데이터의 출력”를 출력하려면 isLoading state의 값을 true에서 false로 업데이트한다.
+- 앱이 실행되면 처음에는 Loading...이 화면에 나타나다가 조금 시간이 지나면 We are ready로 변한다.
+-  movies state를 출력한다.
+
+
+
 
 <details markdown="1">
 <summary>0929</summary>
+
+[09월 29일]
 
 >##### 상대경로 이미지 삽입 방법
 - 이미지가 적을 경우 import를 사용한다.
