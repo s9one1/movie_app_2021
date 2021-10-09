@@ -1,5 +1,8 @@
 # 김민정 202030302
 
+<details markdown="1">
+<summary>1006</summary>
+
 [10월 6일]
 
 >##### axios 설치하기
@@ -66,6 +69,8 @@ https://github.com/serranoarevalo/yts-proxy
 - 서 “영화 데이터의 출력”를 출력하려면 isLoading state의 값을 true에서 false로 업데이트한다.
 - 앱이 실행되면 처음에는 Loading...이 화면에 나타나다가 조금 시간이 지나면 We are ready로 변한다.
 -  movies state를 출력한다.
+
+</details>
 
 
 
