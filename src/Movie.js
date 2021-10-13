@@ -1,17 +1,33 @@
-import PoropTypes from 'prop-types'
+import PropTypes from 'prop-types'
+import './Movie.css'
 
-function Movie() {
+function Movie({ year, title, summary, poster, genres}) {
     return(
-        <h1>Hello</h1>
+        <div className='movie'>
+        <img src={poster} alt={title} title={title} />
+        <div className='movie-data'>
+            <h3 className='movie-title'>{title}</h3>
+            <h5 className='movie-year'>{year}</h5>
+            <ul className='movie-genres'>
+                {genres.map((genre) => {
+                    return <li>{genres}</li>
+                })}
+            </ul>
+            <p className='movie-summary'>{summary}</p>
+
+        </div>
+        </div>
     )
 }
 
 Movie.propTypes = {
-    id: propTypes.number.isRequired,
-    year:propTypes.number.isRequired,
-    title:PoropTypes.string.isRequired,
-    summary:PoropTypes.string.isRequired,
-    poster:PoropTypes.string.isRequired
+    year:PropTypes.number.isRequired,
+    title:PropTypes.string.isRequired,
+    summary:PropTypes.string.isRequired,
+    poster:PropTypes.string.isRequired,
+    genres:PropTypes.arrayOf(PropTypes.string).isRequired,
+
+
 };
 
 export default Movie
