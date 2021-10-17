@@ -49,6 +49,41 @@ function Movie({ year, title, summary, poster }) {
     return <h4>{title}</h4>;
 }
 ```
+>####  App 컴포넌트에서 Movie컴포넌트 그리기
+- 로딩이 완료 되면 실행되는 자리에 movies.map()을 사용한다.
+- map() 함수의 첫 번째 인자로 컴포넌트를 반환하는 함수를 전달하면 된다
+```
+render(){
+      const { isLoading, movies } = this.state;
+      return <div>{isLoading ? 'Loading...' : movies.map()}</div>;
+}
+```
+>####  map() 함수에 컴포넌트를 반환하는 함수 전달하기
+- console탭에 영화 데이터를 출력한 다음, 아무것도 반환하지 않는 함수를 전달해 본다.
+
+>#### Movie 컴포넌트를 반환하도록 movies.map() 수정하기
+- App.js에 Movie 컴포넌트를 import한 다음, movies.map()에 전달한 함수가 <Movie />를 반환하도록 한다.
+```
+import Movie from './Movie'
+```
+>#### Movie컴포넌트에 props 전달하기
+- props를 모두 전달해야 한다.
+- poster props의 경우 키 이름이 medium_cover_image이므로 movies.medium_cover_image라고 작성한다.
+```
+    id = {movie.id} 
+    year = {movie.year}
+    title = {movie.title}
+    summary = {movie.summary}
+    poster = {movie.medium_cover_image}
+```
+>#### App.css 파일 작성하기
+- 배경색을 어두운 색으르 바꾼다.
+```
+body {
+    background-color:#2f2f2f;
+}
+```
+
 
 <details markdown="1">
 <summary>1006</summary>
