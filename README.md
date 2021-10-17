@@ -1,5 +1,55 @@
 # 김민정 202030302
 
+[10월 13일]
+>#### Movie 컴포넌트 만들기
+- src폴더에 Movie.js 파일을 새로 만든다.
+- 컴포넌트의 기본 골격을 작성한다.
+- 함수형 컴포넌트로 작성하기로 한다.
+- Movie에 넘어와야 하는 영화 데이터를 정의하고,관리하기 위해 prop-types를 사용한다. 
+```
+import PropTypes from 'prop-types';
+
+function Movie() {
+    return <h1></h1>;
+}
+
+Movie.propTypes = {};
+
+export default Movie;
+``` 
+>#### Movie.propTypes 작성하기
+-  id를 Movie.propTypes를 추가 한다. 
+    - PropType.number.isRequired로 작성한다.
+- year, title, summary, poster를 각각 Movie.propTypes에 추가 한다.
+    - poster props는 영화 포스터 이미지 주소를 저장하기 위한 것이다
+```
+Movie.propTypes = {
+    id:PropTypes.number.isRequired,
+    year:PropTypes.number.isRequired,
+    title:PropTypes.string.isRequired,
+    summary:PropTypes.string.isRequired,
+    poster:PropTypes.string.isRequired,
+};
+```
+>#### axios.get() 수정하기
+- axios.get()에 yts-proxy.now.sh/list_movies.json?sort_by=rating을 전달한다
+```
+getMovie = async () => {
+  const {
+    data: {
+      data: {movies}
+    }
+  }=await axios.get('https://yts-proxy.now.sh/list_movies.json?sort_by=rating');
+```
+>#### Movie 컴포넌트에서 props를 추가하고 출력해보기
+- Movie 컴포넌트에서 id, title, year, summary, poster props를 받아 출력할 수 있도록 수정한다.
+- map() 함수로 출력
+```
+function Movie({ year, title, summary, poster }) {
+    return <h4>{title}</h4>;
+}
+```
+
 <details markdown="1">
 <summary>1006</summary>
 
