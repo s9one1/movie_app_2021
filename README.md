@@ -1,5 +1,8 @@
 # 김민정 202030302
 
+<details markdown="1">
+<summary>1027</summary>
+
 # [10월 27일]
 >#### 라우터
 - 메뉴를 클릭하면 화면이 이동하게 하는것이 라우터이다.
@@ -44,7 +47,10 @@ function App() {
 - 데이터를 담아 보내려면 Navigation 컴포넌트에 있는 Link컴포넌트의 to props의 구조를 바꿔야 한다.
 - pathname은 URL을 의미하며, state는 우리가 route props에 보내줄 데이터를 의미한다.
 
+</details>
 
+<details markdown="1">
+<summary>1013</summary>
 
 # [10월 13일]
 >#### Movie 컴포넌트 만들기
@@ -129,7 +135,7 @@ body {
     background-color:#2f2f2f;
 }
 ```
-
+</details>
 
 <details markdown="1">
 <summary>1006</summary>
