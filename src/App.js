@@ -59,68 +59,21 @@ function Food({name, picture}){
 export default App
  */
 
-
-
-
-
-
-import React, {Component, useDebugValue} from "react"
-import axios from "axios"
-import Movie from "./Movie"
 import './App.css'
+import { HashRouter, Router} from 'react-router-dom'
+import About from './routes/About'
+import Home from './routes/Home'
+import Navigation from './components/Navigation'
 
-
-class App extends React.Component {
-  state = {
-    isLoading: true,
-    movies: []
-  }
-
-getMovie = async () => {
-  const {
-    data: {
-      data: {movies}
-    }
-  }=await axios.get('https://yts-proxy.now.sh/list_movies.json?sort_by=rating')
-  this.setState({movies, isLoading: false })
+function App() {
+  return (
+    <HashRouter>
+      <Navigation/>
+      <Router path = '/' exact={true} component={Home} />
+      <Router path='/about' component={About}/>
+    </HashRouter>
+  )
 }
-
-  componentDidMount() {
-    this.getMovie() 
-  }
-
-    render(){
-      const { isLoading, movies } = this.state
-      return (
-        <section className = 'container'>
-          {isLoading ? ( 
-            <div className = 'loader'>
-            <span className = 'loader-class'>'Loading...'  </span>
-            </div>
-          )
-          :
-          (
-            <div className = 'movies'>
-              {
-                movies.map( (movie) => {
-                  return (
-                    <Movie 
-                      Key = {movie.id}
-                      /* id = {movie.id} */
-                      year = {movie.year}
-                      title = {movie.title}
-                      summary = {movie.summary}
-                      poster = {movie.medium_cover_image}
-                      genres = {movie.genres}
-                    />
-                  )})}
-              </div>
-              )}
-        </section>
-      )
-    }
-
-  }
 
 export default App
 

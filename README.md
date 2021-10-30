@@ -1,5 +1,51 @@
 # 김민정 202030302
 
+# [10월 27일]
+>#### 라우터
+- 메뉴를 클릭하면 화면이 이동하게 하는것이 라우터이다.
+- 라우터는 react-router-dom패키지를 이용한다.
+>npm install react-router-dom
+- 라우터는 사용자가 입력한 url을 통해 특정 컴포넌트를 불러준다.(loclahost:3000/about)
+
+>#### HashRouter, Router컴포넌트
+- Router에는 2가지 props를 전달할 수 있다.
+    - URL을 이용한 path props
+    - URL에 맞는 컴포넌트를 불러 주기 위한 component props
+
+>#### About.js 수정하기
+- 내용 채우기
+
+>#### Home 컴포넌트를 위한 Route 컴포넌트 추가하기
+- localhost:3000에 접속하면 기본으로 보여줄 컴포넌트를 Home 컴포넌트로 하기위해 path props를 "/"로 입력한다.
+```
+function App() {
+  return (
+    <HashRouter>
+      <Navigation/>
+      <Router path = '/' exact={true} component={Home} />
+      <Router path='/about' component={About}/>
+    </HashRouter>
+  )
+}
+```
+
+>#### Home 링크
+- 링크를 클릭할 때마다 리액트가 죽고, 새 페이지가 열리는 문제 발생
+    - a 태그의 href속성이 페이지 전체를 다시 그리는 성질을 갖고 있기 때문이다.
+    - reac-router-dom의 Link컴포넌트를 사용하면 해결된다.
+>#### Navigation 컴포넌트 위치 다시 확인하기
+- Link, Router 컴포넌트는 반드시 HashRouter안에 포함되어야 한다.
+- HashRouter바깥에 위치한 Nacigation 컴포넌트를 안쪽으로 이동해야한다.
+
+>#### router props
+- route props를 이용해 영화 카드를 누르면 상세 정보를 보여주는 기능을 만든다.
+- route props는 라우팅 대상이 되는 컴포넌트에 넘겨주는 기본 props를 말한다.
+- Route 컴포넌트가 그려줄 컴포넌트에는 항상 이 props가 전달되며, 이 props는 원하는 데이터를 담아 보낼 수 있다.
+- 데이터를 담아 보내려면 Navigation 컴포넌트에 있는 Link컴포넌트의 to props의 구조를 바꿔야 한다.
+- pathname은 URL을 의미하며, state는 우리가 route props에 보내줄 데이터를 의미한다.
+
+
+
 # [10월 13일]
 >#### Movie 컴포넌트 만들기
 - src폴더에 Movie.js 파일을 새로 만든다.
