@@ -8,6 +8,7 @@
 ### 3.영화링크
 ![initial](hello.png)
 >#### 링크를 누른 후 http://localhost:3000/#/movie-detail주소를 다시 입력하면 home화면으로 다시 돌아간다.
+
 >#### 컴포넌트 설치 오류
 ```
 npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but
