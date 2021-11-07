@@ -1,6 +1,12 @@
 # 김민정 202030302
 
 # [11월 03일]
+### 1.ABOUT
+![initial](about.png)
+### 2.HOME
+![initial](home.png)
+### 3.영화링크
+![initial](hello.png)
 >#### 컴포넌트 설치 오류
 ```
 npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but
