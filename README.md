@@ -1,5 +1,35 @@
 # 김민정 202030302
 
+# [11월 03일]
+>#### 컴포넌트 설치 오류
+```
+npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but
+package-lock.json was generated for lockfileVersion@2. I'll try to do my best with it!
+npm ERR! Maximum call stack size exceeded
+npm ERR! A complete log of this run can be found in:
+npm ERR! C:\Users\82102\AppData\Roaming\npm-cache\_logs\2021-10-
+27T07_07_17_243Z-debug.log
+```
+>#### 원인 규명이 되지 않은 오류가 있을 경우
+ npm cache clean --force  
+ npm rebuild  
+ rm -rf node_modules  
+ npm install  
+  
+* 만일 rm명령이 실행되지 않으면 shell을 관리자 권한으로 실행한 후 다시 시도해 본다.
+* 그래도 안될 경우는 탐색기에서 삭제하면 되는데 시간이 조금 걸릴 수는 있다.
+* 원인 모를 문제가 발생했을 때 cache clean과 rebuild를 통해 많은 부분 해결되기도 한다.
+>#### package.json과 package-lock.json 차이
+- package.json은 패기지 의존성 관리 파일이다.
+- 협업을 할 때는 팀원들 각자의 컴퓨터에 같은 패키지들을 설치해서 동일한 개발환경을 구성해야 하는
+게 이때 사용하는 것이 package.json이다. 
+-  개인의 프로젝트를 재 생성하거나, 오류가 있을 때 유용하게 사용된다.
+- 팀원의 버전이 다를 경우
+    - 팀원끼리 npm버전이 일치하는지 확인. $ npm –version
+    - node_modules 폴더를 전부 삭제
+    - npm cache 삭제.
+    - node_modules 재설치. $ npm install
+- package.json의 경우는 version range를 사용한다. "express": "~4.16.1“
 <details markdown="1">
 <summary>1027</summary>
 
