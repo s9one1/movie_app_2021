@@ -1,5 +1,83 @@
 # 김민정 202030302
 
+[11월10일]
+>#### detail.js
+```
+render() {
+        const { location } = this.props
+        if (location.state) {
+            return (
+                <span>{ location.state.title }</span>
+            )    
+        } else {
+            return null
+        }
+        
+    }
+```
+>#### localhost:3000/#/에서 #없애기
+- #이 있으면 크롤링이 안된다.
+    - 만들어 배포했을때 검색이 되지 않는다.
+-import { HashRouter, Route} from 'react-router-dom'를  
+import { BrowserRouter, Route} from  
+   'react-router-dom'로 바꾸면 #이 안뜸
+```
+import './App.css'
+import { BrowserRouter, Route} from 'react-router-dom'
+import About from './routes/About'
+import Home from './routes/Home'
+import Navigation from './components/Navigation'
+import Detail from './routes/Detail'
+```
+>#### git.io
+- 깃허브에서 호스팅을 해줌
+
+- 깃허브에서 https 주소를 가져온 다음 (https://github.com/s9one1/movie_app_2021.git) package.json에서 github.io로 바꾼다.
+(https://s9one1.github.io/movie_app_2021)
+```
+  "homepage": "https://s9one1.github.io/movie_app_2021"
+```
+>#### package.json
+- scripts에 predeploy,deploy 추가
+```
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+```
+>#### react 캡슐화된 컴포넌트
+- 메인 어플리케이션으로 부터 독립되어있는 컴포넌트를 말한다.
+- 컴포넌트 내부에서 발생하는 업데이트, 테스트 케이스, 재사용에 용이하게 컴포넌트를 설계해야한다.
+- 내부에 있는게 무엇인지 모르게 한다.
+>#### react
+- 상호작용이 많은 ui개발에 적합하다.
+- 컴포넌트 로직은 javascript로 작성한다.
+- 캡슐화된 컴포넌트로 개발되어 재사용이 용이하다.(중요)
+- dom과는 별개로 상태를 관리할 수 있다. 
+- 기술 스택의 나머지 부분에는 관여하지 않는다.
+- 기존 코드와 별개로 개발이 가능하다.
+- react native를 이용하면 모바일 앱도 만들 수 있다.
+>#### cdn
+- https://ko.reactjs.org/docs/cdn-links.html
+- access-control-allow-origin: * 허가를 했다. 정상적으로 배포된걸 사용했다.
+
+>#### 바벨
+- 커파일러를 상대방의 버전에 맞게 구식으로 바꿔주는것
+- jsx바벨이 있어야 해석이 가능에서 링크를 해줘야함
+>#### 간단한 컴포넌트
+- react component 에서 render()메소드를 사용하는 예제이다.
+- render() 메소드는 데이터를 입력받아 화면에 반환하는 역할을 한다.
+- 컴포넌트로 전달된 데이터는 render() 안에서 this.props를 통해 접근 가능핟.
+- react를 개발하는데 반드시 jsx를 
+>#### state가 포함된 component
+- 동적인 데이터를 this.state로 접근할 수 있다
+- state가 변하면 render()메소드가 다시 호출되어 화면이 갱신된다.
+- 예제는 화면이 켜져있는 동안 초를 카운트하는 timer앱이다.
+- 초기의state를 0으로 출력한다. 
+- 이후 componentdidmount()메소르도 1초에 한번씩 tick()메소드를 호출한다.
+- 호출된 tick()메소드는 setstate()를 통해 state를 1씩 증가시킨다.
 # [11월 03일]
 ### 1.ABOUT
 ![initial](about.png)
