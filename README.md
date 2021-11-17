@@ -1,5 +1,9 @@
 # 김민정 202030302
 
+// "homepage": "https://s9one1.github.io/movie_app_2021" 
+
+  "homepage" : "c://DeveloperN/movie21/"
+
 [11월10일]
 >#### detail.js
 ```
