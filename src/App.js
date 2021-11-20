@@ -59,7 +59,7 @@ function Food({name, picture}){
 export default App
  */
 
-import './App.css'
+/* import './App.css'
 import { BrowserRouter, Route} from 'react-router-dom'
 import About from './routes/About'
 import Home from './routes/Home'
@@ -77,5 +77,49 @@ function App() {
   )
   }
 
-export default App
+export default App */
+
+import React from "react";
+//import {Remarkable } from 'remarkable'
+import { Remarkable } from 'remarkable'
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.md = new Remarkable();
+    this.handleChange = this.handleChange.bind(this);
+    this.state = { value: 'Hello, **world**!' };
+  }
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
+  getRawMarkup() {
+    return { __html: this.md.render(this.state.value) };
+  }
+
+  render() {
+    return (
+      <div className="MarkdownEditor">
+        <h3>Input</h3>
+        <label htmlFor="markdown-content">
+          Enter some markdown
+        </label>
+        <textarea
+          id="markdown-content"
+          onChange={this.handleChange}
+          defaultValue={this.state.value}
+        />
+        <h3>Output</h3>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={this.getRawMarkup()}
+        />
+      </div>
+    );
+  }
+}
+
+
+export default App;
 

@@ -1,8 +1,185 @@
 # 김민정 202030302
 
-// "homepage": "https://s9one1.github.io/movie_app_2021" 
+<details markdown="1">
+<summary>1117</summary>
 
-  "homepage" : "c://DeveloperN/movie21/"
+[11월 17일]
+>#### package.json homepage
+- "homepage":"https://s9one1.github.io/movie_app_2021"로 하는 방식에서  
+"homepage" : "c://DeveloperN/movie21/"으로 바꿔 검생하는 방식
+>#### state가 포함된 component
+- 동적인 데이터는 this.state로 접근할 수 있다.
+
+>#### todo List
+- todoapp과 todolist 두개의 컴포넌트로 구성
+- handlechange는 모든 키보드 입력마다 react의 state를 갱신해서 보여준다.
+- element에서 확인한다.
+- 시간순으로 보면 유저입력>handlechange>react의 state갱신>from element가 react state를 참조
+- 유저 입력을 강제로 대문자로 변경할 경우에도 사용한다.
+```
+handleChange(event) {
+    this.setState((value:event target value toUpperCase()))
+}
+```
+- handlesubmit은 버튼이 클릭될때 발생하는 event를 처리한다.
+
+>#### render() 메소드
+- render() 메소드에서 초기 렌더링을 실행한다.
+- onChange를 통해 input에 입력되는 값으로 state상태 변경을 준비한다.
+- 입력된 값은 state의 "text"에 임시로 저장된다.
+- level의 htmlFor은 input 과의 연결을 위한 id 값이다.
+    - className 처럼 html 과 구분하기 위해 jsx에서 사용하는 키워드이다.
+
+>#### todo.html
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script crossorigin src=""></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [], text: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="new-todo">
+            What needs to be done?
+          </label>
+          <input
+            id="new-todo"
+            onChange={this.handleChange}
+            value={this.state.text}
+          />
+          <button>
+            Add #{this.state.items.length + 1}
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  handleChange(e) {
+    this.setState({ text: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.state.text.length === 0) {
+      return;
+    }
+    const newItem = {
+      text: this.state.text,
+      id: Date.now()
+    };
+    this.setState(state => ({
+      items: state.items.concat(newItem),
+      text: ''
+    }));
+  }
+}
+
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(
+  <TodoApp />,
+  document.getElementById('todos-example')
+);
+    </script>
+</head>
+<body>
+    <div id="todos-example"></div>
+    
+</body>
+</html>
+```
+>#### handleSubmit(e)에서 e.preventDefault() 메소드를 사용하는 이유
+- 브라우저에서 양식을 제출할 때는 기본적으로 부라우저의 새로고침이 발생한다.
+    - react나 spa(single page application)의 경우 필요가 없는 동작임으로 이를 방지하기 위해 사용한다.
+1. state.text의 길이가 0이면 아무것도 반환하지 않는다.
+2. 0이 아니면 newite에 입력받은 text와 현재 시간을 저장한다.
+3. 저장된 newitem을 state의 item 배열에 저장하고, text를 비운다.
+
+>#### key props의 역할
+- key는 props의 안정적으로 사용할 수 있도록 고유성을 부여하기 위해 필오하다.
+- react가 어떤 props를 변경, 추가 또는 삭제할지 식별하는 것을 도와준다.
+- 반드시 date를 사용하지 않아도 되며, 배열의 index값을 사용해도 된다.
+- 유일한 값이라면 그 값이 무엇이든 상관없다.
+
+>#### 외부 플러그인을 사용하는 컴포넌트
+- 외부컴포넌트를 사용한 markdown에디터 이다.
+- 현재 1~3의 예제를 cnd방법으로 진행했음으로 동일하게 진행한다.
+
+>#### remarkable
+- https://github.com/jonschlinkert/remarkable
+- https://cdnjs.com/libraries/remarkable
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script crossorigin src=""></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/2.0.1/remarkable.min.js" integrity="sha512-skYYbQHAuOTpeJTthhUH3flZohep8blA+qjZOY0VqmfXMDiYcWxu29F5UbxU4LxaIpGkRBk+3Qf8qaXfd9jngg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/babel">
+        class HelloMessage extends React.Component {
+        render() {
+            return (
+            <div>
+                Hello {this.props.name}
+            </div>
+            );
+        }
+        }
+
+        ReactDOM.render(
+        <HelloMessage name="Taylor" />,
+        document.getElementById('hello-example')
+        );
+    </script>
+</head>
+<body>
+    <div id="hello-example"></div>
+    
+</body>
+</html>
+```
+- npx create-react-app markdown-ditor를 터미널에서 사용해서 깔기
+- npm install remarkable --save를 터미널에서 사용해서 저장
+</details>
+
+<details markdown="1">
+<summary>1110</summary>
 
 [11월10일]
 >#### detail.js
@@ -82,6 +259,10 @@ import Detail from './routes/Detail'
 - 초기의state를 0으로 출력한다. 
 - 이후 componentdidmount()메소르도 1초에 한번씩 tick()메소드를 호출한다.
 - 호출된 tick()메소드는 setstate()를 통해 state를 1씩 증가시킨다.
+</details>
+<details markdown="1">
+<summary>1103</summary>
+
 # [11월 03일]
 ### 1.ABOUT
 ![initial](about.png)
@@ -120,6 +301,7 @@ npm ERR! C:\Users\82102\AppData\Roaming\npm-cache\_logs\2021-10-
     - npm cache 삭제.
     - node_modules 재설치. $ npm install
 - package.json의 경우는 version range를 사용한다. "express": "~4.16.1“
+</details>
 <details markdown="1">
 <summary>1027</summary>
 
