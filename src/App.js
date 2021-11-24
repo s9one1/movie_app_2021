@@ -80,7 +80,6 @@ function App() {
 export default App */
 
 import React from "react";
-//import {Remarkable } from 'remarkable'
 import { Remarkable } from 'remarkable'
 class App extends React.Component {
   constructor(props) {
