@@ -1,6 +1,116 @@
 # 김민정 202030302
 
 <details markdown="1">
+<summary>1124</summary>
+
+[11월 24일]
+>#### 외부 플러그인을 사용하는 컴포넌트
+- 외부컴포넌트를 사용한 markdown 에디터이다.
+- 외부 플러그인은 remarkable을 사용함으로 cdn으로 링크를 추가한다.
+- remarkable.js로 검색해야 찾을 수 있다.
+- cdn사이트에서 링크를 복사해 추가한다.
+- 공식사이트의 소스코드를 복사해 넣는다.
+>#### creat-react-app으로, remarkable 사용하기
+- creat-react-app으로 markdown-editor 프로젝트를 생성한다.
+- 정상 동작을 확인한다.
+- App.js에 있는 필요없는 코드를 삭제한다.
+- App.js에 문서의 코드를 복사해 넣는다.
+- comonent의 이름을 App으로 수정한다.
+- rendering은 index.js에 위임한다.
+- remarkable을 설치한다.
+- react와 remarkable을 import한다.
+- 동작이 되는지 확인한다.
+
+>#### code review
+- 외부 컴포넌트를 사용하기 위해 생성자 내에 객체를 생성한다.
+- state를 이용하여 remarkable에 변환할 마크다운 문장을 제출한다.
+- 글리 입력되면 handleChange 이벤트를 사용하여 state의 value를 갱신한다.
+- getRawMarkup()메소드를 통해 html을 반환 받는다.
+
+>#### gettingstart
+- react는 처음부터 점진적으로 적용할 수 있도록 설계되었으며 필요한
+만큼 react를 사용할 수 있다.
+- 온라인 코드 편집기를 사용하여 간편하게 리액트를 경험할 수 있다. 
+codepen,codesandbox, stackblitz
+- codesandbox는 create-react-app으로 생성된 프로젝트와 동일한
+환경에서 테스트가 가능핟.
+- cdn방식으로 간편하게 테스트를 할 수 있도록 html코드를 제공하고 있다.
+- react문서가 어렵게 느껴진다면, tania rascia가 쓴 react 개요를 먼저
+학습하는 것이 도움이 된다.
+- 개발을 통해 react를 학습하고 싶다면 자습서를 추천
+
+>#### 개념
+- 주요 개념
+  - 개념을 단계별로 배우려면 주요 개념부터 시작하는 것을 추천
+
+- 고급 개념
+  - 강력하지만 일반적으로 많이 사용되지는 않는 react 기능을 소개한다.
+
+- api 참조
+  - 특정 react api를 자세히 알아보고 싶을 때 유용한 문서
+
+>#### hook
+- 16.8부터 새로 추가된 hook에 대한 자세한 설명을 제공한다.
+- 다른 언어를 할 때도 많이 도움이 된다.
+
+>#### CMS
+- 홈페이지 관리
+- wordpress(매우 많이 쓰는것, 한국에 정착됨, )
+- 게시판 중심으로 발달 (dcinside)
+- 개발자가아니어도 조금 배우면 홈페이지를 만들 수 있음
+
+>### Main Concepts
+1. hello world
+```
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('root')
+);
+```
+2. jsx 소개
+- jsx표현식을 변수에 저장한걸 변수를 jsx표현식에서 가져가서 사용할 수 있다
+- jsx에 표현식 포함하기
+```
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+- 함수의 호출 결과를 jsx에 표현식 포함하기
+- if,for문 등과 함께 사용, 변수에 할당, 인자로 받고, 함수로부터 반환할 수 있다.
+```
+function getGreeting(user) {
+  if (user) {
+    return <h1>Hello, {formatName(user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+```
+- 속성에 따옴표를 이용해 문자열 리터럴을 정의할 수 있다.
+```
+const element = <div tabIndex="0"></div>;
+```
+- 속성에 중괄호를 사용하여 javascript 표현식을 삽입할 수 있다
+```
+const element = <img src={user.avatarUrl}></img>;
+```
+- babel은 jsx를 react.createElement()호출로 컴파일 한다.
+
+>#### Components와 Props
+-react에는 함수 컴포넌트와 클래스 컴포넌트가 있다. 
+- 컴포넌트의 이름은 항상 대문자로 시작한다.
+- 문서 '컴포넌트 렌더링'예제의 실행 과정은 다음과 같다.
+```
+1.<Welcome name="Sara" /> 엘리먼트로 ReactDOM.render()를 호출합니다.
+2.React는 {name: 'Sara'}를 props로 하여 Welcome 컴포넌트를 호출합니다.
+3.Welcome 컴포넌트는 결과적으로 <h1>Hello, Sara</h1> 엘리먼트를 반환합니다.
+4.React DOM은 <h1>Hello, Sara</h1> 엘리먼트와 일치하도록 DOM을 효율적으로 업데이트합니다.
+```
+</details>
+<details markdown="1">
 <summary>1117</summary>
 
 [11월 17일]
