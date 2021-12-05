@@ -1,5 +1,7 @@
 # 김민정 202030302
 
+<details markdown="1">
+<summary>1201</summary>
 [12월 1일]
 
 >#### 컴포넌트 추출
@@ -97,7 +99,10 @@ ReactDOM.render(
   - jsx를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달한댜.
   - react에서는 false를 반환해도 기본 동작을 방지할 수 없으먀, 반드시 preventDefault를 명시적으로 호출해야 한다.
   - js에서는 dom 엘리먼트가 생성된 후 리스너를 추가하기 위해 addEventListener를 호출하지만, react에서는
-엘리먼트가 처음 렌더링될때
+  엘리먼트가 처음 렌더링될때
+
+</details>
+
 <details markdown="1">
 <summary>1124</summary>
 
