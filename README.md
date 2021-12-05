@@ -1,5 +1,103 @@
 # 김민정 202030302
 
+[12월 1일]
+
+>#### 컴포넌트 추출
+- 컴포넌트를 여러 개의 작은 컴포넌트를 나누어 관리,  
+편의성 및 가독성을 높인다.
+- props는 읽기 전용이다.  
+  - 함수 컴포넌트나 클래스 컴포넌트 모두 컴포넌트의 자체 props를 수정해서는 안된다.
+
+>#### state and Lifecycle
+- clock 컴포넌트를 재사용하고 캡슐화하는 방법
+- clock이 스스로 업데이트 되는 것이다.
+```
+ReactDOM.render(
+  <Clock />,
+  document.getElementById('root')
+);
+```
+- 이를 위해서는 clock에 state가 있어야 한다.
+
+>#### 클래스에 로컬 state추가하기
+- 세 단계에 걸쳐서 date를 props에서 state로 이동한다.
+1. render() 메서드 안에 있는 this.props.date를 this.state.date로 변경합니다.
+```
+class Clock extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+```
+1. 초기 this.state를 지정하는 class constructor를 추가합니다.
+```
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+```
+ - 클래스 컴포넌트는 항상 props로 기본 constructor를 호출해야 합니다.
+ 3. <Clock /> 요소에서 date prop을 
+ 삭제합니다.
+ ```
+ ReactDOM.render(
+  <Clock />,
+  document.getElementById('root')
+);
+ ```
+ - 결과
+ ```
+ class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Clock />,
+  document.getElementById('root')
+);
+ ```
+
+>#### state를 올바르게 사용하기
+- 직접 state를 수정하지 않는다.
+- this.state를 지정할 수 있는 유일한 공간은 바로 constructor이다.
+- this.props와 this.state가 비동기적으로 업데이트될 수 있기 때문에 다음 state를 계산할 때 해당 값에 의존해서는 안 된다.
+
+>#### 이벤트 처리하기
+- React 엘리먼트에서 이벤트를 처리하는 방식은 DOM 엘리먼트에서 이벤트를 처리하는 방식과 매우 유사하다.
+- 몇가지의 문법 차이
+  - react의 이벤트는 소문자 대신 캐멀 케이스(camelcase)를 사용한다.
+  - jsx를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달한댜.
+  - react에서는 false를 반환해도 기본 동작을 방지할 수 없으먀, 반드시 preventDefault를 명시적으로 호출해야 한다.
+  - js에서는 dom 엘리먼트가 생성된 후 리스너를 추가하기 위해 addEventListener를 호출하지만, react에서는
+엘리먼트가 처음 렌더링될때
 <details markdown="1">
 <summary>1124</summary>
 
