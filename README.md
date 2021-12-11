@@ -1,14 +1,51 @@
 # 김민정 202030302
-<details markdown="1">
-<summary>1208</summary>
-</details>
 
 # [1208]
 
 >#### 조건부 렌더링
 - React에서는 원하는 동작을 캡슐화하는 컴포넌트를 만들 수 있다.
-이를 통해 애플리케이션의 상태에 따라 컴포넌트 중 몇 개만을 렌더링할 수 있다.
+  - 이를 통해 애플리케이션의 상태에 따라 컴포넌트 중 몇 개만을 렌더링할 수 있다.
   - 리액트의 조건부 렌더링은 자바스크립트의 조건문과 같은 형태로 사용된다.
+```
+class LoginControl extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.state = {isLoggedIn: false};
+  }
+
+  handleLoginClick() {
+    this.setState({isLoggedIn: true});
+  }
+
+  handleLogoutClick() {
+    this.setState({isLoggedIn: false});
+  }
+
+  render() {
+    const isLoggedIn = this.state.isLoggedIn;
+    let button;
+    if (isLoggedIn) {
+      button = <LogoutButton onClick={this.handleLogoutClick} />;
+    } else {
+      button = <LoginButton onClick={this.handleLoginClick} />;
+    }
+
+    return (
+      <div>
+        <Greeting isLoggedIn={isLoggedIn} />
+        {button}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <LoginControl />,
+  document.getElementById('root')
+);
+```
 > #### 엘리먼트 변수
 - react에서는 렌더링 하려는 엘리먼트를 변수에 저장할 수 있다.
 - element란 리액트가 가장 작은 단위로 화면에 표시할 내용을 작성한다.
@@ -152,16 +189,7 @@ render() {
 const temperature = this.props.temperature;
 // ...
 ```
->#### 컴포넌트에서 다른 컴포넌트를 담기
-
->#### 특수화
-
->#### 상속
-
->#### React로 사고하기
-
->#### Hook의 개요
-
+>
 
 <details markdown="1">
 <summary>1201</summary>
