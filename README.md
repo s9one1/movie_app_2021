@@ -1,4 +1,167 @@
 # 김민정 202030302
+<details markdown="1">
+<summary>1208</summary>
+</details>
+
+# [1208]
+
+>#### 조건부 렌더링
+- React에서는 원하는 동작을 캡슐화하는 컴포넌트를 만들 수 있다.
+이를 통해 애플리케이션의 상태에 따라 컴포넌트 중 몇 개만을 렌더링할 수 있다.
+  - 리액트의 조건부 렌더링은 자바스크립트의 조건문과 같은 형태로 사용된다.
+> #### 엘리먼트 변수
+- react에서는 렌더링 하려는 엘리먼트를 변수에 저장할 수 있다.
+- element란 리액트가 가장 작은 단위로 화면에 표시할 내용을 작성한다.
+>#### 논리 연산자 &&로 if를 인라인으로 표현하기 
+- JSX안에는 중괄호를 이용해서 JS표현식을 포함 할 수 있다.
+- 논리 연산자 &&를 사용하면 쉽게 엘리먼트를 조건부로 넣을 수 있다.
+>#### 조건부 연산자로 if-else구문을 인라인으로 표현하기
+- 엘리먼트를 조건부로 렌더링하는 또 다른 방법은 조건부 연사자인 condition ? true:false를 사용하는 것이다.
+  - 가독성이 다소 떨어지지만 큰 표현식을 넣을 수도 있다.
+
+>#### 컴포넌트가 렌더링하는 것을 막기
+- 다른 컴포넌트에 의해 어떤 컴포넌트가 렌더링되는 것을 숨기고 싶을 때가 있을 수
+있다.
+  - 이 때는 렌더링 결과를 출력하는 대신 null을 반환하면 해결할 수 있다.
+  - null을 반환하는 것은 생명주기 메서드 호출에 영향을 주지 않는다.
+
+>#### 리스트와 key
+- 배열의 값을 반환할 때는 map()함수를 사용한다. 변환하여 반환하는 것도 가능하다.
+```
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map((number) => number * 2);
+console.log(doubled);
+// [2, 4, 6, 8, 10]을 출력
+```
+- react에서 배열을 리스트로 만드는 방식도 이와 유사하다
+>#### 여러개의 엘리먼트 렌더링 하기
+- 예제는 배열로 부터 항목을 꺼네 ```<li>``` 엘리먼트에 넣어 저장하고, 이 것을 ```<ul>``` 엘리먼트 안에 포함시켜 DOM에 렌더링한다.
+>#### 기본 리스트 컴포넌트
+- number배열을 props로 받아서 순서 없는 엘리먼트 리스트를 출
+력하는 컴포넌트로 리팩토링 한다
+- 예제에서 key를 넣어야 한다는 경고가 표시되면
+key props를 넣어 주면 되고, 꼭 스트링으로 변환해 줘야 하는 것은 아니다.
+>#### key
+- Key는 React가 어떤 항목을 변경, 추가 또는 삭제할지 식별하는 것을 돕는다
+- key는 엘리먼트에 고유성을 부여하기 위해 배열 내부의 요소에 지정해야 한다.
+- 일반적으로 항목이 고정적일 경우는 배열의 index값을 사용한다.
+  - 항목의 순서가 바뀔 수 있는 경우는 index사용을 권장하지 않는다.
+  - 이 것 때문에 성능이 저하되거나 컴포넌트의 state와 관련된 문제가 발생할 수 있기
+때문이다.
+
+>#### key로 컴포넌트 추출하기
+- ListItem 안에 있는 ```<li>``` 엘리먼트가 아니라 분해하는 곳의 ```<ListItem />``` 엘
+리먼트가 key를 가져야 한다.
+- 가장 적절할 방법은 map()함수 내부에 있는 엘리먼트에 key를 넣어 주는 것이 좋다.
+
+>#### key는 배열내 요소 사이에서만 고유한 값이면 된다.
+- Key는 배열내의 요소 사이에서 고유 하면 되고, 전체 범위에서 고유할 필요는 없다
+- 당연히 두 개의 다른 배열을 사용할 때 동일한 key를 사용할 수 있다
+- 컴포넌트에 key로 사용할 prop을 전달 할 수는 있지만 key자체를 전달할 수는 없다.
+- key값은 key로만 사용되어야 한다.
+```
+const content = posts.map((post) =>
+<Post
+key={post.id}
+id={post.id}
+title={post.title} />
+)
+```
+>#### jsx에 map() 포함시키기
+- 앞의 예제에서는 별도의 listItems 변수를 선언하고, 여기에 JSX에 포함시켰다.
+- JSX를 사용하면 중괄호 안에 모든 표현식을 포함 시킬 수 있으므로 map() 함수의 결
+과를 인라인으로 처리할 수 있다
+- 이 방식을 사용하면 코드가 깔끔해 지지만 사용에 주의를 해야한다.
+- 사용전에 가독성이 좋지 않다면 변수로 추출하는 것이 나을 수도 있다
+>#### form
+- HTML의 form 엘리먼트는 내부 state를 갖기 때문에 React의 다른 DOM 엘리먼트와는 다르게 동작한다
+- 만일 제시한 예가 순수한 HTML이라면 이 폼은 name을 입력 받고, 폼을 제출하면 새로운 페이지로 이동한다.
+  - React에서도 동일한 동작을 원한다면 그대로 사용하면 된다
+- 그러나 일반적인 경우라면 JS함수로 폼의 제출을 처리하고, 사용자가 폼에 입력한
+데이터에 접근하도록 하는 것이 편리하다.
+- 이를 위한 표준 방식은 “제어 컴포넌트 (controlled components)“라고 불리는 기술
+을 이용하는 것이다
+>#### 제어 컴포넌트
+-  HTML에서는 form의 각 엘리먼트는 사용자의 입력을 기반으로 자신의 state를 관리하고 업데이트 한다.
+- React에서는 변경할 수 있는 state가 컴포넌트의 state 속성에 저장되며, setState()함수를 이용해서 업데이트 한다.
+- 폼에서 사용되는 값을 React의 state로 일원화 하면 관리를 편하게 할 수 있다.
+- React의 state를 통해 값이 제어되는 입력 폼 엘리먼트를 “제어 컴포넌트 (controlled component)“라고 한다
+>#### textarea 태크
+- HTML에서 textarea 엘리먼트는 텍스트를 DOM상에서의 자식으로 정의한다.
+- React에서 textarea는 value 속성을 사용한다.
+  -  react의 textarea는 싱글 태그를 사용하여 작성한다.
+- 꼭 초기 값이 있어야 되는 것은 아니다.
+>#### select 태그
+- HTML에서 select는 드롭 다운 목록을 만든다.
+- HTML에서는 option 태그의 속성으로 selected를 사용하고 있으나, react에서는
+select 태그의 속성으로 지정한다
+- select의 value에 option의 value 값을를 지정해서 selected를 대신한다.
+- state의 관리는 textarea와 동일하다.
+-  select 태그에 multiple 옵션을 허용하면, value 속성에 배열을 전달할 수 있다
+```
+<select multiple={true} value={['B', 'C']}>
+```
+>#### file input 태그
+- HTML에서 ```<input type="file">``` 은 사용자가 하나 이상의 파일을 로컬에서 서버로
+업로드하거나, File API를 통해 JavaScript로 조작할 수 있다.
+- 값이 읽기 전용이기 때문에 React에서는 비제어 컴포넌트 (uncontrolled components)이다
+>#### 다중 입력 제어하기
+- 여러개의 input 엘리먼트를 제어해야 한다면 각 엘리먼트에 name 속성을 추가하고,
+event.target.name 값을 통해 핸들러가 어떤 작업을 할 지 선택할 수 있게 해준다.
+- 주어진 input 태그의 name에 일치하는 state를 업데이트하기 위해 ES6의 computed
+property name 구문을 사용한다.
+- setState()는 자동적으로 현재 state에 일부 state만을 갱신하기 때문에 바뀐 부분에 대해서만 호출하면 된다
+>#### 제어되는 input null 값
+- 제어 컴포넌트에 value prop을 지정하면 의도하지 않는 한 사용자가 변경할 수 없다.
+- value를 설정했는데 여전히 수정할 수 있다면, 실수로 value를 undefined나 null로 설정했을 수 있다
+>#### 제어 컴포넌트의 대안
+- 데이터를 변경할 수 있는 모든 방법에 대해 이벤트 핸들러를 작성하고, React 컴포넌트를 통해 모든 입력 상태를 연결해야 하기 때문에 때로는 제어 컴포넌트를 사용하는 게 불편할 수도 있다.
+- 이럴경우에 입력 폼을 구현하기 위한 대체 기술인 비제어 컴포넌트 (uncontrolled
+components)를 사용할 수 있다.
+>#### state를 parents component로 올리기
+- 때로는 동일한 데이터에 대한 변경사항을 여러 컴포넌트에 반영해야 할 필요가 있다. 이럴 때는 가장 가깝고, 공통된 parents component로 state를 올리는 것이 좋다.
+
+>#### BoilingVerdict와 Calculator 컴포넌트 작성
+- BoilingVerdict 컴포넌트는 섭씨 온도를 의미하는 celsius prop를 받아서 이 온도가
+물이 끓기에 충분한지 여부를 출력한다.
+- Calculator 컴포넌트는 온도를 입력할 수 있는 ```<input>``` 을 렌더링하고 그 값을
+this.state.temperature에 저장한다.
+- 현재 입력값에 대한 BoilingVerdict 컴포넌트의 반환값을 렌더링한다.
+>#### 두 번째 input 추가하기
+- 섭씨와 함께 화씨 입력 필드도 추가하고, 두 필드 간에 동기화 상태를 유지하도록 한다.
+- Calculator에서 온도 입력 부분을 빼내서, TemperatureInput 컴포넌트를 작성한다.
+- 그리고 "c" 또는 "f"의 값을 가질 수 있는 scale prop를 추가한다.
+- Calculator 컴포넌트는 두 개의 온도 필드를 렌더링하는 간단한 컴포넌트로 변경할 수 있게 된다
+>#### 변환 함수 작성하기
+- temperature문자열 과 변환 함수 를 인자로 받아 문자열을 반환하는 또 다른 함수를 작성한다
+- 올바르지 않은 temperature 값에 대해서는 빈 문자열을 반환하고, 값을 소수점 세 번째 자리로 반올림하여 출력한다.
+>#### state 올리기
+- 두 TemperatureInput 컴포넌트가 각각의 입력값을 각자의 state에 독립적으
+로 저장하고 있다.
+- React에서 state를 공유하는 일은 그 값을 필요로 하는 컴포넌트 간의 가장 가까운 공통 조상으로 state를 끌어올림으로써 구현할 수 있다.
+- 이제 TemperatureInput이 개별적으로 가지고 있던 지역 state를 지우는 대신 Calculator로 그 값을 옮기도록 한다.
+- 부모인 Calculator가 공유될 state를 소유하고 있으면, 이 컴포넌트는 두 입력 필드의
+현재 온도에 대한 state로 작동하게 된다.
+- TemperatureInput 컴포넌트의 props가 같은 부모인 Calculator로부터 전달되기 때문에, 두 입력 필드는 항상 동기화된 상태를 유지할 수 있게 된다.
+- TemperatureInput 컴포넌트에서 this.state.temperature를 this.props.temperature로
+대체한다
+- 값을 Calculator로부터 전달 받을 것이다.
+```
+render() {
+// Before: const temperature = this.state.temperature;
+const temperature = this.props.temperature;
+// ...
+```
+>#### 컴포넌트에서 다른 컴포넌트를 담기
+
+>#### 특수화
+
+>#### 상속
+
+>#### React로 사고하기
+
+>#### Hook의 개요
+
 
 <details markdown="1">
 <summary>1201</summary>
